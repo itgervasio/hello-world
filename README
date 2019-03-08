@@ -1,0 +1,47 @@
+SLAC is a formal language for the specification of Service-Level-Agreement for Cloud Computing.
+
+
+The Tools is divided in two main parts:
+
+    1- The Framework that: parses the SLA document and transforms it into a constraint; parses the monitoring data and transformsforms into a constrainst and checks
+    the satisfatibility of the union of these constraints. In case of violation, the actions to be taken are returned
+
+    2- The RPC Client which invokes the framework sending SLAs, monitoring data and requiring the verification of the conformance of the SLA. Multiple request can 
+    be executed at the same time.
+
+Use:
+   In a terminal start the Framework.py - python Framework.py
+   Send the SLA and the monnitoring data - E.g.: : python Client_RPC.py -s Examples/SLAs/Case_Study_1_3.slac -m Examples/Monitoring/Case_Study_1_Monitoring.slac
+
+
+Requirements:
+    ZeroRPC: http://zerorpc.dotcloud.com/ - pip install zerorpc 
+    Gevent: http://www.gevent.org/ - pip install gevent 
+    Z3: http://z3.codeplex.com/ - Source Code
+    Simple Parser: http://simpleparse.sourceforge.net/ - Source Code
+
+
+Examples:
+    SLAs:
+        ./Examples/SLAs/Case Study 1_1.slac - SLA without Guarantees
+        ./Examples/SLAs/Case Study 1_2.slac - SLA with Simple Guarantees
+        ./Examples/SLAs/Case_Study_1_3.slac - SLA with Complex Guarantees
+
+        ./Examples/SLAs/Case_Study_2.slac - SLA describing a hybrid Cloud
+
+    Monitoring Data:
+        ./Examples/Monitoring/Case_Study_1_Monitoring_Sat.slac - Example of the Monitoring data that satisfies the constraints for case study 1 (from 1 to 3)
+        ./Examples/Monitoring/Case_Study_1_Monitoring_Violations.slac - Example of the Monitoring data that violates the constraints for case study 1 (from 1 to 3)
+        ./Examples/Monitoring/Case_Study_2_Monitoring_Sat.slac - Example of Monitoring data that satisfies the constraints for case study 2
+        ./Examples/Monitoring/Case_Study_2_Monitoring_Violations.slac - Example of Monitoring data that violates the constraints for case study 2
+
+*be careful when writting new SLAs and formatting monitoring data, being a prototype, the tool is sensitive to spaces, tabs, new lines and small errors.
+
+TODO:
+    Add 'not' to the terms
+    Add all specified terms
+    Implement Business Aspects
+    Render the parsing less sensitive to spaces and order
+    Return clear reasons for parsing errors
+
+
